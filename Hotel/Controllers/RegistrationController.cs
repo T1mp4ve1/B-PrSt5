@@ -13,7 +13,24 @@ namespace Hotel.Controllers
             _registrationService = registrationService;
         }
 
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> List()
+        {
+            var users = await _registrationService.GetAllAsync();
+            var userRoles = new Dictionary<string, IList<string>>();
+
+            foreach (var u in users)
+            {
+                var roles = await _registrationService.GetRolesAsync(u);
+                userRoles[u.Id] = roles;
+            }
+            ViewBag.Role = userRoles;
+            return View(users);
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddUser(RegistrationModel model)

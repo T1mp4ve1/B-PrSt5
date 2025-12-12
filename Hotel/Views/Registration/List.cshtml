@@ -1,0 +1,27 @@
+﻿@model List<Hotel.Models.ClienteModel>
+@{
+    var role = ViewBag.Role as Dictionary<string, IList<string>>;
+}
+
+<h2>Utenti registrati</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Ruoli</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Email</td>
+                <td>@u.Nome</td>
+                <td>@u.Cognome</td>
+                <td>@string.Join(", ", role[u.Id])</td>
+            </tr>
+        }
+    </tbody>
+</table>

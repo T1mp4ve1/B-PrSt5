@@ -44,6 +44,11 @@ namespace Hotel.Services
             return res;
         }
 
+        public async Task<IList<string>> GetRolesAsync(ClienteModel user)
+        {
+            return await _userManager.GetRolesAsync(user);
+        }
+
         public async Task<List<ClienteModel>> GetAllAsync()
         {
             return await _userManager.Users.ToListAsync();

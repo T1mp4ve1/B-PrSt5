@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Camere";
+    var tipi = ViewBag.Tipi as List<TipoCamera>;
+    var camere = ViewBag.Camere as List<CameraModel>;
+}
+
+<h2 class="text-center mb-3">Gestione camere</h2>
+
+<div class="container">
+    <div class="row gap-3 d-flex justify-content-around w-100">
+        <!-- aggiungi camere-->
+        <div class="col card p-3">
+            <h4>Aggiungi camera</h4>
+            <form action="/Camere/AddRoom" method="post">
+                <input type="number" class="form-control mb-2" name="Numero" placeholder="Numero..." required />
+                <select class="form-control mb-2" name="TipoCameraId" required>
+                    @foreach (var r in tipi)
+                    {
+                      <option value="@r.TipoCameraId">@r.Tipo @r.Prezzo</option>  
+                    }  
+                </select>
+                <button type="submit" class="btn btn-outline-success">Aggiungi</button>
+            </form>
+            <hr />
+            <div class="d-flex flex-wrap">
+                @if (camere.Count() == 0)
+                {
+                    <h3>Nessuna camera trovata</h3>
+                }
+                else
+                {
+                    @foreach (var c in camere)
+                    {
+                        <div class="card d-flex justify-content-center align-items-center m-1" style="width: 40px; height: 40px;">@c.Numero</div>
+                    }
+                }
+            </div>  
+        </div>
+
+        <!-- aggiungi tipo-->
+        <div class="col card p-3">
+            <h4>Aggiungi tipo camera</h4>
+            <form action="/Camere/AddTypeRoom" method="post">
+                <input type="text" class="form-control mb-2" name="Tipo" placeholder="Tipo..." required />
+                <input type="number" step="0.01" class="form-control mb-2" name="Prezzo" placeholder="Prezzo..." required />
+                <button type="submit" class="btn btn-outline-success">Aggiungi</button>
+            </form>
+            <hr />
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Tipo</th>
+                        <th>Prezzo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var r in tipi)
+                    {
+                        <tr>
+                            <td>@r.TipoCameraId</td>
+                            <td>@r.Tipo</td>
+                            <td>@r.Prezzo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

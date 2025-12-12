@@ -1,5 +1,6 @@
 using Hotel.Data;
 using Hotel.Models;
+using Hotel.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICamereService, CamereService>();
 
 builder.Services.AddIdentity<ClienteModel, IdentityRole>(options =>
 {

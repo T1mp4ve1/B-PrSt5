@@ -11,5 +11,6 @@ namespace Hotel.Data
 
         public DbSet<CameraModel> Camere { get; set; }
         public DbSet<PrenotazioneModel> Prenotazioni { get; set; }
+        public DbSet<TipoCamera> TipiCamere { get; set; }
     }
 }

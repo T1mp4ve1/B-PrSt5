@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Hotel.Models
 {
@@ -13,12 +12,8 @@ namespace Hotel.Models
         public int Numero { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        public string Tipo { get; set; }
-
-        [Required]
-        [Precision(10, 2)]
-        public decimal Prezzo { get; set; }
+        public int TipoCameraId { get; set; }
+        public TipoCamera TipoCamera { get; set; }
 
         public ICollection<PrenotazioneModel> Prenotazioni { get; set; }
     }

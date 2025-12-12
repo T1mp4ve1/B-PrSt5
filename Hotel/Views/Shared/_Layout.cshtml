@@ -22,9 +22,21 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Registrati</a>
                         <div>|</div>
+                        @if (User.IsInRole("Admin"))
+                        {
                         <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="List">Elenco utenti</a>
-                        <div>|</div>
+                           <div>|</div>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Camere" asp-action="Index">Gestione camere</a>
+                        <div>|</div> 
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                        }
                     </div>
                 </div>
                     

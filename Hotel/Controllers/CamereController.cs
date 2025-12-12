@@ -1,9 +1,11 @@
 ﻿using Hotel.Models;
 using Hotel.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CamereController : Controller
     {
         private readonly ICamereService _camServices;

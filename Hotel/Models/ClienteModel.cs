@@ -13,10 +13,6 @@ namespace Hotel.Models
         [MaxLength(200)]
         public string Cognome { get; set; }
 
-        [Required]
-        [MaxLength(50)]
-        public string Telefono { get; set; }
-
         public ICollection<PrenotazioneModel> Prenotazioni { get; set; }
     }
 }

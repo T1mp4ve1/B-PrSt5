@@ -38,10 +38,9 @@ namespace Hotel.Controllers
             if (await _camServices.GetAllAsync().ContinueWith(t => t.Result.Any(c => c.Numero == camera.Numero)))
             {
                 ModelState.AddModelError("Numero", "Camera con questo numero esiste gia");
-                ViewBag.Tipi = await _camServices.TypeGetAllAsync();
-                ViewBag.Camere = await _camServices.GetAllAsync();
-
-                return View("Index");
+                //ViewBag.Tipi = await _camServices.TypeGetAllAsync();
+                //ViewBag.Camere = await _camServices.GetAllAsync();
+                return RedirectToAction("Index");
             }
             await _camServices.CreateAsync(camera);
             return RedirectToAction("Index");

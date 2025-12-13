@@ -18,7 +18,9 @@ namespace Hotel.Services
 
         public async Task<List<PrenotazioneModel>> GetAllAsync()
         {
-            return await _db.Prenotazioni.AsNoTracking().ToListAsync();
+            return await _db.Prenotazioni
+                .Include(p => p.Cliente)
+                .Include(c => c.Camera).AsNoTracking().ToListAsync();
         }
     }
 }

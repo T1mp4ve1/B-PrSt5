@@ -26,6 +26,9 @@ namespace Hotel.Controllers
             var camere = await _camereService.GetAllAsync();
             ViewBag.Camere = camere;
 
+            var prenotazioni = await _services.GetAllAsync();
+            ViewBag.Prenotazioni = prenotazioni;
+
             return View();
         }
 

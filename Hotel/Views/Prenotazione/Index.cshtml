@@ -1,10 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Prenotazione";
     var camere = ViewBag.Camere as List<CameraModel>;
+    var prenotazioni = ViewBag.Prenotazioni as List<PrenotazioneModel>;
 }
 @model PrenotazioneModel
 
-<div class="row d-flex justify-content-center align-content-center">
+<div class="row d-flex justify-content-center align-content-center mb-4">
     <div class="col-6 card p-4">
         <h2>Prenota</h2>
 
@@ -39,7 +40,28 @@
 </div>
 
 @if(User.IsInRole("Admin")){
+    <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                <th>PrenotazioneId</th>
+                <th>Info cliente</th>
+                <th>DataInizio</th>
+                <th>DataFine</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+            @foreach (var p in prenotazioni)
+                    {
+                        <tr>
+                            <td>@p.PrenotazioneId</td>
+                    <td>@p.Cliente.Nome @p.Cliente.Cognome (@p.Cliente.Email)</td>
+                            <td>@p.DataInizio</td>
+                            <td>@p.DataFine</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 }
 
 @section Scripts {

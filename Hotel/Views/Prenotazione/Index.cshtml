@@ -44,6 +44,7 @@
                 <thead>
                     <tr>
                 <th>PrenotazioneId</th>
+                <th>Stanza</th>
                 <th>Info cliente</th>
                 <th>DataInizio</th>
                 <th>DataFine</th>
@@ -55,9 +56,17 @@
                     {
                         <tr>
                             <td>@p.PrenotazioneId</td>
+                            <td>@p.Camera.Numero</td>
                     <td>@p.Cliente.Nome @p.Cliente.Cognome (@p.Cliente.Email)</td>
                             <td>@p.DataInizio</td>
                             <td>@p.DataFine</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@p.PrenotazioneId" class="btn btn-warning btn-sm">Update</a>
+                        <form asp-action="Delete" asp-route-id="@p.PrenotazioneId" method="post" style="display:inline">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+
                         </tr>
                     }
                 </tbody>

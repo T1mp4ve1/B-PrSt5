@@ -31,15 +31,6 @@
                 <input asp-for="Password" type="password" class="form-control" placeholder="Password..." />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-
-            <div class="form-group mb-3">
-                <label>Ruolo</label>
-                <select asp-for="Ruolo" class="form-control">
-                    <option value="User">Cliente</option>
-                    <option value="Admin">Dipendente</option>
-                </select>
-            </div>
-
             <button type="submit" class="btn btn-outline-success">Registrati</button>
         </form>
     </div>

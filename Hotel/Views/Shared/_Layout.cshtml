@@ -20,11 +20,10 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Prenotazione" asp-action="Index">Prenotazione</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Registrati</a>
-                        <div>|</div>
-                        @if (User.IsInRole("Admin"))
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
                         {
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="List">Elenco utenti</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="List">Gestione utenti</a>
                            <div>|</div>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Camere" asp-action="Index">Gestione camere</a>
                         <div>|</div> 
@@ -36,6 +35,8 @@
                         else
                         {
                             <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            <div>|</div>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Registrati</a>
                         }
                     </div>
                 </div>

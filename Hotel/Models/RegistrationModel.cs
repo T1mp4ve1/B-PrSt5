@@ -23,7 +23,6 @@ namespace Hotel.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
-        public string Ruolo { get; set; }
+        public string? Ruolo { get; set; }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model Hotel.Models.RegistrationModel
+@{
+    ViewData["Title"] = "Registrazione";
+}
+<div class="row d-flex justify-content-center align-content-center">
+    <div class="col-6 card p-4">
+        <h2>Registrazione</h2>
+
+        <form asp-action="AddUser" method="post">
+            <div class="form-group mb-1">
+                <input asp-for="Email" class="form-control" placeholder="Email..." />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-1">
+                <input asp-for="Nome" class="form-control" placeholder="Nome..." />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-1">
+                <input asp-for="Cognome" class="form-control" placeholder="Cognome..." />
+                <span asp-validation-for="Cognome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-1">
+                <input asp-for="Telefono" class="form-control" placeholder="Telefono..." />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-1">
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password..." />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Registrati</button>
+        </form>
+    </div>
+</div>
+

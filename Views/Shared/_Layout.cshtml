@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hotel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Hotel.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Hotel</a>
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <div>|</div>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Prenotazione" asp-action="Index">Prenotazione</a>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                        {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="List">Gestione utenti</a>
+                           <div>|</div>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Camere" asp-action="Index">Gestione camere</a>
+                        <div>|</div> 
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            <div>|</div>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Registration" asp-action="Index">Registrati</a>
+                        }
+                    </div>
+                </div>
+                    
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Hotel - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
